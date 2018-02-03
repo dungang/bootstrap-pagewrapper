@@ -2,7 +2,7 @@
 
 Bootstrap的分页组件
 
-![模态框](demo/demo.jpg)
+![模态框](demo/demo.png)
 
 
 ## 使用
