@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<br/>
+<div class="container">
+        <!-- HTML 代码 -->
+        <form id="form" class="form">
+            <div class="row">
+                <div class="col-md-3 col-sm-3">
+                    <input class="form-control" name="aadd" value="22" />
+                </div>
+                <div class="col-md-3 col-sm-3">
+                    <button class="btn btn-primary" id="search">search</button>
+                </div>
+            </div>
+        </form>
+        <h1>共<span id="total-records">0</span>条数据</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>star</th>
+                    <th>price</th>
+                    <th>pic</th>
+                </tr>
+            </thead>
+            <tbody id="data-view">
+    
+            </tbody>
+        </table>
+        <div id="page-wrapper" class="text-center"></div>
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/dist/bootstrap.pagewrapper.js"></script>
+    <script>
+        $(document).ready(function () {
+            /* 使用选项选项来初始化数据 */
+            var page = $('#page-wrapper').pageWrapper({
+                url: 'data/items.json',
+                viewContainer: '#data-view',
+                onBeforeLoad: function () {
+                    console.log("before load ...");
+                },
+                onfterRender: function (isFirst) {
+                    console.log('render completed!')
+                },
+                onComplete: function () {
+                    console.log("complete whatever ...");
+                },
+                renderView: function (data, isFirst, res) {
+                    //获取总记录条数，是第一层加载数据，则调用。
+                    if (isFirst && res.count) {
+                        $('#total-records').text(res.count);
+                    }
+                    var html = "";
+                    for (var p in data) {
+                        var item = data[p];
+                        html += "<tr><td>" + item.id + "</td>" +
+                            "<td>" + item.name + "</td>" +
+                            "<td>" + item.star + "</td>" +
+                            "<td>" + item.price + "</td>" +
+                            "<td>" + item.pic + "</td></tr>";
+                    }
+                    return html;
+                }
+            });
+
+            //外部表单搜索更新表格的结果
+            $('#form').submit(function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var data = $this.serialize();
+                console.log(data);
+                page.pageWrapper('reload', data);
+            })
+        });
+    </script>
+</body>
+
+</html>

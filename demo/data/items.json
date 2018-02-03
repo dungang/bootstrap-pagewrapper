@@ -1,0 +1,48 @@
+{
+    "code":"0",
+    "count":160,
+    "data":[
+      {
+        "name":"杭州西溪宾馆",
+        "price":"3000",
+        "star": 4,
+        "id":"123243434",
+        "pic":"../images/img5.jpg"
+      },
+      {
+        "name":"杭州西溪宾馆",
+        "price":"3000",
+        "star": 4,
+        "id":"123243434",
+        "pic":"../images/img5.jpg"
+      },
+      {
+        "name":"杭州西溪宾馆",
+        "price":"3000",
+        "star": 4,
+        "id":"123243434",
+        "pic":"../images/img5.jpg"
+      },
+      {
+        "name":"杭州西溪宾馆",
+        "price":"3000",
+        "star": 4,
+        "id":"123243434",
+        "pic":"../images/img5.jpg"
+      },
+      {
+        "name":"杭州西溪宾馆",
+        "price":"3000",
+        "star": 4,
+        "id":"123243434",
+        "pic":"../images/img5.jpg"
+      },
+      {
+        "name":"杭州西溪宾馆",
+        "price":"3000",
+        "star": 4,
+        "id":"123243434",
+        "pic":"../images/img5.jpg"
+      }
+    ]
+  }
