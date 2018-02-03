@@ -47,7 +47,8 @@ Bootstrap的分页组件
                     console.log("complete whatever ...");
                 },
                 renderView: function (data, isFirst, res) {
-                    //获取总记录条数，是第一层加载数据，则调用。
+                    //获取总记录条数，是第一次加载数据，则调用。
+                    //reload的时候，也是第一次加载数据
                     if (isFirst && res.count) {
                         $('#total-records').text(res.count);
                     }
