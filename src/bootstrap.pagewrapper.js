@@ -302,7 +302,7 @@
         if (typeof this.renderView == 'function') {
             var html = this.renderView.call(this, data, firstLoadData, res);
             if (html) {
-                if (this.options.scrollable) {
+                if (this.options.scrollable && firstLoadData == false) {
                     this.viewContainer.append(html);
                 } else {
                     this.viewContainer.html(html);
@@ -386,9 +386,7 @@
         if (typeof param == 'string') {
             param = this.parseQueryString(param);
         }
-        param = $.extend({}, param, {
-            page: 1
-        });
+        this._reqParams = $.extend({}, this.options.param);
         this.loadData(param, PageWrapper.FIRST_LOAD);
     }
 
