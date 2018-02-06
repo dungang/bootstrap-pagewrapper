@@ -348,7 +348,7 @@
             }
             $[that.call](that.url, param, function (res) {
                 if (res.code == '0') {
-                    that.isEnd = ((res.data != null && res.data.constructor == Array.prototype.constructor && res.data.length > 0) || res.data == null || typeof res.data == 'undefined') ? true : false;
+                    that.isEnd = ((res.data != null && res.data.constructor == Array.prototype.constructor && res.data.length == 0) || res.data == null || typeof res.data == 'undefined') ? true : false;
                     that.pageNum = param.page || 1;
                     that.pages = Math.ceil(res.count / param.limit);
                     that.renderPager();
