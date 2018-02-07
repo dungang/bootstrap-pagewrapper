@@ -336,6 +336,8 @@
 
     PageWrapper.prototype.loadData = function (param, firstLoadData) {
         if (typeof param == 'string') {
+            //表单序列化乱码
+            params = decodeURIComponent(param, true);
             param = this.parseQueryString(param);
         }
         var that = this;
